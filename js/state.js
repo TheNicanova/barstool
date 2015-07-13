@@ -133,12 +133,11 @@ angular.module('state', ['btford.socket-io'])
       $scope.minRSSI = 125;
       $scope.maxRSSI = 200;
       $scope.isPaused = false;
+      $scope.maxNumberOfSamplesAccessible = 10;
       $scope.maxNumberOfSamples = 10;
       $scope.updateChart = true; // Each time this value changes, the chart is being updated.
  
       
-      $interval(updateFromService , REFRESH_SECONDS * 1000);
- 
       function updateFromService() {
    
         var sample = transmitterSamples.getLatest(); // Getting the latest data.
@@ -168,6 +167,7 @@ angular.module('state', ['btford.socket-io'])
         $scope.updateChart = !$scope.updateChart;
  
         transmitterSamples.setUrl($scope.apiRoot + WHEREIS_QUERY + $scope.transmitterId);
+        $scope.maxNumberOfSamples = $scope.maxNumberOfSamplesAccessible;
         $scope.rssiSamples = {};
         $scope.receivers = {};
         $scope.numReceivers = 0;
@@ -251,7 +251,8 @@ angular.module('state', ['btford.socket-io'])
     }
  
     $scope.updateFromUser();
- 
+    $interval(updateFromService , REFRESH_SECONDS * 1000);
+
   }])
  
  
@@ -458,13 +459,11 @@ angular.module('state', ['btford.socket-io'])
       //$scope.setReceiverUrl = setReceiverUrl;
  
       // Data
-      $scope.rssiSeconds = 0;
       $scope.rssiSamples = {};
       $scope.displayData = {};
  
       // Meta-Data
       $scope.transmitters = {};
-      $scope.numTransmitters= 0;
  
       // Accessible to the User. Display preference.
       $scope.isDiscovering = true;
@@ -472,9 +471,7 @@ angular.module('state', ['btford.socket-io'])
       $scope.maxNumberOfSamplesAccessible = 10;
       $scope.maxNumberOfSamples = 10;
       $scope.updateChart = true; // Each time this value changes, the chart is being updated.
-      receiverSamples.setUrl($scope.apiRoot + WHATAT_QUERY + $scope.receiverId);
-      
-      $interval(updateFromService , REFRESH_SECONDS * 1000);
+            
  
       function updateFromService() {
  
@@ -566,7 +563,9 @@ angular.module('state', ['btford.socket-io'])
   
         return Math.round(sum/num);
       }
- 
+
+      $interval(updateFromService , REFRESH_SECONDS * 1000);
+      $scope.updateFromUser();
   }])
  
   .directive('barChart',  function($parse, $window) {
