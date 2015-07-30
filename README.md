@@ -16,7 +16,15 @@ Barstool presents two interfaces : Transmitter and Receiver.
 
 The transmitter interface visualises the RSSI in real-time for each detected receivers. A line-chart is used for visualising the data. Among other options, the user can choose the range for the x and y axis in the interface. The update button restarts the visualisation with the chosen parameters. 
 
+A snapshot of the transmitter interface : 
+
+![alt tag](https://cloud.githubusercontent.com/assets/12238788/8973503/5003aa2a-3633-11e5-9563-a42d6f65fd4d.png)
+
 The receiver interface visualises the latest and average RSSI in real-time for each detected transmitters. A bar-chart is used for visualising the data. Among other options, the user can choose the number of data points to aggregate in the average. The update button restarts the visualisation with the chosen parameters.
+
+A snapshot of the receiver interface : 
+
+![alt tag](https://cloud.githubusercontent.com/assets/12238788/8973517/6a39ea8a-3633-11e5-9838-d8b70477e7c7.png)
 
 Both interfaces offer a pause button for facilitating screenshots and a stop-discovering button to restrict the visualisation to the already detected devices.
 
