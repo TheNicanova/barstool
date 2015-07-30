@@ -6,21 +6,28 @@ Overview
 Barstool is a client-side visualisation of the barnowl-barnacles-barterer stack using AngularJS, D3js and socket.io.
 
 ### Installation
-
+---------------------------------------------------
 Simply clone the repository and open the index.html file in your favourite web browser.
 
-Interface
+### Interface
 --------
 
-Options
--------
+Barstool presents two interfaces : Transmitter and Receiver.
 
-The following options are available.
+The transmitter interface visualises the RSSI in real-time for each detected receivers. A line-chart is used for visualising the data. Among other options, the user can choose the range for the x and y axis in the interface. The update button restarts the visualisation with the chosen parameters. 
+
+The receiver interface visualises the latest and average RSSI in real-time for each detected transmitters. A bar-chart is used for visualising the data. Among other options, the user can choose the number of data points to aggregate in the average. The update button restarts the visualisation with the chosen parameters.
+
+Both interfaces offer a pause button for facilitating screenshots and a stop-discovering button to restrict the visualisation to the already detected devices.
+
 
 What's next?
 ------------
 
-Interactive between tabs.
+* An event interface.
+* The option to move and update between the transmitter and receiver interfaces through clicking on the transmitter/receiver we want to visualise in the other interface.
+* Displaying blink rates.
+* The option to choose the polling rate.
 
 License
 -------
